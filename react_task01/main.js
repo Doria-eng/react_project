@@ -6,16 +6,28 @@
 */
 
 function MyApp() {
+  const [isPurple, setIsPurple] = React.useState("");
+  const [textColor, setTextColor] = React.useState("");
+
+  console.log(textColor);
+
   return (
     <main>
       <label>
         Purple
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          value="isPurple"
+          onChange={() => setIsPurple(!isPurple)}
+        />
       </label>
 
       <label>
         text color
-        <select>
+        <select
+          onChange={(event) => setTextColor(event.target.value)}
+          value="textColor"
+        >
           <option value="" selected>
             White
           </option>
@@ -33,7 +45,9 @@ function MyApp() {
         Circle Rotate
         <input type="number" value="0" />
       </label>
-      <div className="circle">Hi!</div>
+      <div className={`circle ${isPurple ? "purple" : ""} ${textColor}`}>
+        Hi!
+      </div>
     </main>
   );
 }
