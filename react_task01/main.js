@@ -9,7 +9,16 @@ function MyApp() {
   const [isPurple, setIsPurple] = React.useState("");
   const [textColor, setTextColor] = React.useState("");
 
-  console.log(textColor);
+  const [size, setSize] = React.useState(150);
+  const [rotate, setRotate] = React.useState(0);
+
+  const circleStyle = {
+    height: `${size}px`,
+    wight: `${size}px`,
+    lineHeight: `${size}px`,
+
+    transform: `rotate(${rotate}deg`,
+  };
 
   return (
     <main>
@@ -38,14 +47,25 @@ function MyApp() {
 
       <label>
         Circle Size
-        <input type="number" value="150" />
+        <input
+          type="number"
+          value={size}
+          onChange={(event) => setSize(event.target.value)}
+        />
       </label>
 
       <label>
         Circle Rotate
-        <input type="number" value="0" />
+        <input
+          type="number"
+          value={rotate}
+          onChange={(event) => setRotate(event.target.value)}
+        />
       </label>
-      <div className={`circle ${isPurple ? "purple" : ""} ${textColor}`}>
+      <div
+        className={`circle ${isPurple ? "purple" : ""} ${textColor}`}
+        style={circleStyle}
+      >
         Hi!
       </div>
     </main>
