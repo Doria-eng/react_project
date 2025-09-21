@@ -2,11 +2,14 @@ function AppContent() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  // derived state
+  const usernameClass = username.length <= 5 ? "input-error" : "input";
+  const passwordClass = password.length <= 5 ? "input-error" : "input";
+
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (username === "" || password === "") {
-      alert('"username" and "password" are required');
+    if (usernameClass === "input-error" || passwordClass === "input-error") {
       return;
     }
 
@@ -23,14 +26,14 @@ function AppContent() {
       <h2 className="h2">Login Form</h2>
       <form onSubmit={handleSubmit} className="form">
         <input
-          className="input"
+          className={usernameClass}
           type="text"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
         />
         <br />
         <input
-          className="input"
+          className={passwordClass}
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
