@@ -10,26 +10,36 @@ function AppContent() {
       return;
     }
 
-    alert("username", username);
-    alert("password", password);
+    console.log("username: ", username);
+    console.log("password: ", password);
+
+    setUsername("");
+    setPassword("");
   }
 
   // JSX syntax
   return (
-    <main>
-      <h2>Login Form</h2>
-      <form onSubmit={handleSubmit}>
+    <main className="main">
+      <h2 className="h2">Login Form</h2>
+      <form onSubmit={handleSubmit} className="form">
         <input
+          className="input"
           type="text"
+          value={username}
           onChange={(event) => setUsername(event.target.value)}
         />
+        <br />
         <input
+          className="input"
           type="password"
+          value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
 
         <br />
-        <button type="submit">Login</button>
+        <button className="btn" type="submit">
+          Login
+        </button>
       </form>
     </main>
   );
